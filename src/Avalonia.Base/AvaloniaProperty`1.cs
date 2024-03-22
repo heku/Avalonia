@@ -77,7 +77,7 @@ namespace Avalonia
             {
                 return BindingValue<object?>.Unset;
             }
-            else if (value == BindingOperations.DoNothing)
+            if (value == BindingOperations.DoNothing)
             {
                 return BindingValue<object?>.DoNothing;
             }

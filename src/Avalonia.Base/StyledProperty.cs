@@ -137,9 +137,9 @@ namespace Avalonia
         {
             if (ValidateValue?.Invoke(metadata.DefaultValue) == false)
             {
-                    throw new ArgumentException(
-                        $"'{metadata.DefaultValue}' is not a valid default value for '{Name}'.");
-                }
+                throw new ArgumentException(
+                    $"'{metadata.DefaultValue}' is not a valid default value for '{Name}'.");
+            }
 
             base.OverrideMetadata(type, metadata);
         }
@@ -222,7 +222,7 @@ namespace Avalonia
             if (value == BindingOperations.DoNothing)
             {
                 converted = default;
-                return false; 
+                return false;
             }
             if (value == UnsetValue)
             {
@@ -230,16 +230,13 @@ namespace Avalonia
                 converted = default;
                 return false;
             }
-            else if (TypeUtilities.TryConvertImplicit(PropertyType, value, out var v))
+            if (TypeUtilities.TryConvertImplicit(PropertyType, value, out var v))
             {
                 converted = (TValue)v!;
                 return true;
             }
-            else
-            {
-                var type = value?.GetType().FullName ?? "(null)";
-                throw new ArgumentException($"Invalid value for Property '{Name}': '{value}' ({type})");
-            }
+            var type = value?.GetType().FullName ?? "(null)";
+            throw new ArgumentException($"Invalid value for Property '{Name}': '{value}' ({type})");
         }
 
         private object? GetDefaultBoxedValue(Type type)
