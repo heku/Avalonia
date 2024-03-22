@@ -29,7 +29,7 @@ namespace Avalonia.Interactivity
         /// </remarks>
         public void Register(Type type, RoutedEvent @event)
         {
-            type = type ?? throw new ArgumentNullException(nameof(type));
+            _ = type ?? throw new ArgumentNullException(nameof(type));
             @event = @event ?? throw new ArgumentNullException(nameof(@event));
 
             if (!_registeredRoutedEvents.TryGetValue(type, out var list))
@@ -63,7 +63,7 @@ namespace Avalonia.Interactivity
         /// <returns>All routed events registered with the provided type.</returns>
         public IReadOnlyList<RoutedEvent> GetRegistered(Type type)
         {
-            type = type ?? throw new ArgumentNullException(nameof(type));
+            _ = type ?? throw new ArgumentNullException(nameof(type));
 
             if (_registeredRoutedEvents.TryGetValue(type, out var events))
             {

@@ -135,14 +135,11 @@ namespace Avalonia
         /// <param name="metadata">The metadata.</param>
         public void OverrideMetadata(Type type, StyledPropertyMetadata<TValue> metadata)
         {
-            if (ValidateValue != null)
+            if (ValidateValue?.Invoke(metadata.DefaultValue) == false)
             {
-                if (!ValidateValue(metadata.DefaultValue))
-                {
                     throw new ArgumentException(
                         $"'{metadata.DefaultValue}' is not a valid default value for '{Name}'.");
                 }
-            }
 
             base.OverrideMetadata(type, metadata);
         }

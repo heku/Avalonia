@@ -112,10 +112,7 @@ namespace Avalonia
         /// <inheritdoc/>
         internal override void InvokeSetter(AvaloniaObject instance, BindingValue<TValue> value)
         {
-            if (Setter == null)
-            {
-                throw new ArgumentException($"The property {Name} is readonly.");
-            }
+            _ = Setter ?? throw new ArgumentException($"The property {Name} is readonly.");
 
             if (value.HasValue)
             {
@@ -132,10 +129,7 @@ namespace Avalonia
         /// <inheritdoc/>
         void IDirectPropertyAccessor.SetValue(AvaloniaObject instance, object? value)
         {
-            if (Setter == null)
-            {
-                throw new ArgumentException($"The property {Name} is readonly.");
-            }
+            _ = Setter ?? throw new ArgumentException($"The property {Name} is readonly.");
 
             Setter((TOwner)instance, (TValue)value!);
         }

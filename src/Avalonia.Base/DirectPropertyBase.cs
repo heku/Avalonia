@@ -66,7 +66,7 @@ namespace Avalonia
         /// <returns>The unset value.</returns>
         public TValue GetUnsetValue(Type type)
         {
-            type = type ?? throw new ArgumentNullException(nameof(type));
+            _ = type ?? throw new ArgumentNullException(nameof(type));
             return GetMetadata(type).UnsetValue;
         }
 
