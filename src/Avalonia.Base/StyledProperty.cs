@@ -188,15 +188,6 @@ namespace Avalonia
             }
         }
 
-        /// <summary>
-        /// Gets the string representation of the property.
-        /// </summary>
-        /// <returns>The property's string representation.</returns>
-        public override string ToString()
-        {
-            return Name;
-        }
-
         object? IStyledPropertyAccessor.GetDefaultValue(Type type) => GetDefaultValue(type);
 
         object? IStyledPropertyAccessor.GetDefaultValue(AvaloniaObject owner) => GetDefaultValue(owner);
