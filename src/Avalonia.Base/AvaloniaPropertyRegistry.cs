@@ -345,7 +345,7 @@ namespace Avalonia
 
                 if (p == property)
                 {
-                    return (DirectPropertyBase<T>)p;
+                    return property;
                 }
             }
 
